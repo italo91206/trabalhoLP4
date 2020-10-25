@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Cadastrar novo produto</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-novo card">
+    <form action="~/Produto/Novo" method="post">
+        <label>Nome</label>
+        <input type="text" name="Nome" value="" placeholder="Tekpix 3000-v2" />
+
+        <br/>
+
+        <label>Descrição</label>
+        <input type="text" name="Descricao" value="" placeholder="Insira aqui uma descrição..."/>
+
+        <br/>
+
+        <label>Categoria</label>
+        <input type="text" name="Categoria" value="" placeholder="Eletrônicos" />
+
+        <br/> 
+        
+        <label>Preço</label>
+        <input type="number" name="categoriaPreco" value="" placeholder="R$ 10.99" />
+
+        <br/>
+
+        <label>Quantidade</label>
+        <input type="number" name="Qtd" value="" placeholder="01"/>
+
+        <br/>
+        <input type="submit" name="name" value="Cadastrar produto" />
+    </form>
+</div>
