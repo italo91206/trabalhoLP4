@@ -12,24 +12,30 @@ namespace trabalhoLP4.Controllers
         {
             return View();
         }
-        public IActionResult Logar([FromBody] string usuario, string senha)
+        public IActionResult Logar([FromBody] Models.Usuario usuario)
         {
-            //if(usuario != "admin" || senha != "123")
-            //{
-            //    ViewBag.Msg = "Usuário e Senha não são válidos.";
-            //    return View("Index");
-            //}
-            //else
-            //{
-                ViewBag.NomeUsuarioLogado = "administrador";
-                ViewBag.Logado = 1;
+            int id = usuario.Logar(usuario.Login, usuario.Senha);
+            
 
+            if (id > -1)
+            {
+                usuario = usuario.Obter(id);
                 return Json(new
                 {
                     operacao = true,
-                    msg = "deu certo..."
+                    msg = "deu certo...",
+                    usuario = Json(usuario)
                 }); ;
-            //}
+            }
+            else
+            {
+                return Json(new
+                {
+                    operacao = false,
+                    msg = "deu errado..."
+                }); ;
+            }
+            return View();
         }
     }
 }

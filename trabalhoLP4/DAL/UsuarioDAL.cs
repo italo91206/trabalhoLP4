@@ -21,39 +21,43 @@ namespace trabalhoLP4.DAL
             _bd.ExecutarNonQuery(sql, parametros);
         }
 
-        public bool Logar(string login, string senha)
+        public int Logar(string login, string senha)
         {
-            string sql = @"select count(*) from usuario where login  = @login and senha = @senha";
+            int retorno = -1;
+            string sql = @"select UsuarioId from usuario where login  = @login and senha = @senha";
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             parametros.Add("@login", login);
             parametros.Add("@senha", senha);
 
-            object retorno = _bd.ExecutarSelectScalar(sql, parametros);
-            if (retorno == null || Convert.ToInt32(retorno) == 0)
-                return false;
-            else
-                return true;
+            DbDataReader dr = _bd.ExecutarSelect(sql, parametros);
+            if (dr.HasRows)
+            {
+                dr.Read();
+                retorno = Convert.ToInt32(dr["UsuarioId"]);
+            }
+            
+            return retorno;
+            
         }
 
-        public bool Obter(int id, Models.Usuario usuario)
+        public Models.Usuario Obter(int id, Models.Usuario usuario)
         {
-            bool ok = false;
+            Models.Usuario novo = new Models.Usuario();
             string sql = $@"select * from usuario where UsuarioId = {id}";
             DbDataReader dr = _bd.ExecutarSelect(sql);
 
             if (dr.HasRows)
             {
-                ok = true;
                 usuario = new Models.Usuario();
                 dr.Read(); // move para a primeira linha
                 
-                usuario.Id = Convert.ToInt32(dr["UsuarioId"]);
-                usuario.Nome = dr["nome"].ToString();
-                usuario.Email = dr["Email"].ToString();
+                novo.Id = Convert.ToInt32(dr["UsuarioId"]);
+                novo.Nome = dr["nome"].ToString();
+                novo.Email = dr["Email"].ToString();
             }
             
             _bd.Fechar();
-            return ok;
+            return novo;
         }
     }
 }

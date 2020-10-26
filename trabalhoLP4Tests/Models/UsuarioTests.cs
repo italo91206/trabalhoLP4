@@ -13,17 +13,17 @@ namespace trabalhoLP4.Models.Tests
         public void LogarTest()
         {
             Models.Usuario usuario = new Usuario();
-            bool ok = usuario.Logar("adm", "123");
+            int resposta = usuario.Logar("adm", "123");
 
-            Assert.IsTrue(ok);
+            Assert.AreNotSame(-1, resposta);
         }
         [TestMethod()]
         public void LogarErradoTest()
         {
             Models.Usuario usuario = new Usuario();
-            bool ok = usuario.Logar("adm", "12345");
+            int resposta = usuario.Logar("adm", "12345");
 
-            Assert.IsFalse(ok);
+            Assert.AreEqual(-1, resposta);
         }
 
         [TestMethod()]

@@ -40,16 +40,15 @@ namespace trabalhoLP4.Models
             banco.Gravar(usuario);
         }
 
-        public bool Logar(string email, string senha)
+        public int Logar(string login, string senha)
         {
             DAL.UsuarioDAL banco = new DAL.UsuarioDAL();
-            return banco.Logar(email, senha);
+            return banco.Logar(login, senha);
         }
 
-        public bool Obter(int id)
+        public Models.Usuario Obter(int id)
         {
             DAL.UsuarioDAL banco = new DAL.UsuarioDAL();
-            
             return banco.Obter(id, this);
         }
     }

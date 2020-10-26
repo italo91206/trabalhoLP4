@@ -1,6 +1,6 @@
 ﻿let index = {
     login: function () {
-        var login = document.getElementById('usuario').value;
+        var login = document.getElementById('login').value;
         var senha = document.getElementById('senha').value;
         var errors = document.getElementById('errors');
 
@@ -20,7 +20,7 @@
                 }
             };
 
-            fetch("login/logar", config)
+            fetch("Login/Logar", config)
                 .then(function (RetornoServidor) {
                     return RetornoServidor.text();
                 })
