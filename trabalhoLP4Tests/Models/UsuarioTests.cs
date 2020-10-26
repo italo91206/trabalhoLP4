@@ -25,14 +25,5 @@ namespace trabalhoLP4.Models.Tests
 
             Assert.AreEqual(-1, resposta);
         }
-
-        [TestMethod()]
-        public void ObterTest()
-        {
-            Models.Usuario usuario = new Usuario();
-            bool ok = usuario.Obter(1);
-            
-            Assert.IsTrue(ok);
-        }
     }
 }

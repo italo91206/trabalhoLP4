@@ -13,7 +13,7 @@ namespace trabalhoLP4.Controllers
             if (ViewBag.Logado == null)
                 return View("~/Views/Login/Index.cshtml");
             else
-                return View();
+                return View("~/Views/Default/Index.cshtml");
         }
     }
 }

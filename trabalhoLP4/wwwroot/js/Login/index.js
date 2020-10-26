@@ -10,6 +10,7 @@
         else {
             let config = {
                 method: "POST",
+                redirect: "follow",
                 body: JSON.stringify({
                     login: login,
                     senha: senha
@@ -19,14 +20,8 @@
                     'Accept': 'application/json'
                 }
             };
-
+            
             fetch("Login/Logar", config)
-                .then(function (RetornoServidor) {
-                    return RetornoServidor.text();
-                })
-                .then(function (obj) {
-                    console.log(obj);
-                })
         }
     }
 }

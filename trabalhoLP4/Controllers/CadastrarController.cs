@@ -20,7 +20,7 @@ namespace trabalhoLP4.Controllers
                 
                 ViewBag.Logado = 1;
                 ViewBag.NomeUsuarioLogado = usuario.Nome;
-                return View("~/Views/Default/Index.cshtml");
+                return View("~/Views/Produto/Index.cshtml");
             }
             else
             {

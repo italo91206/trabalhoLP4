@@ -20,12 +20,9 @@ namespace trabalhoLP4.Controllers
             if (id > -1)
             {
                 usuario = usuario.Obter(id);
-                return Json(new
-                {
-                    operacao = true,
-                    msg = "deu certo...",
-                    usuario = Json(usuario)
-                }); ;
+                ViewBag.usuarioConectado = usuario;
+                ViewBag.Logado = true;
+                return Redirect("/produto");
             }
             else
             {
@@ -35,7 +32,6 @@ namespace trabalhoLP4.Controllers
                     msg = "deu errado..."
                 }); ;
             }
-            return View();
         }
     }
 }
