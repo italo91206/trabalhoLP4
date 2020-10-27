@@ -1,7 +1,10 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<p>Teste de produto</p>
+@section javascript{
+    <script src="~/js/Produto/index.js"></script>
+}
+
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -15,29 +18,46 @@
 <div class="content-novo card">
     <form action="~/Produto/Novo" method="post">
         <label>Nome</label>
-        <input type="text" name="Nome" value="" placeholder="Tekpix 3000-v2" />
+        <input type="text" id="Nome" value="" placeholder="Tekpix 3000-v2" />
 
-        <br/>
+        <br />
 
         <label>Descrição</label>
-        <input type="text" name="Descricao" value="" placeholder="Insira aqui uma descrição..."/>
+        <input type="text" id="descricao" value="" placeholder="Insira aqui uma descrição..." />
 
-        <br/>
+        <br />
 
         <label>Categoria</label>
-        <input type="text" name="Categoria" value="" placeholder="Eletrônicos" />
+        <input type="text" id="categoria" value="" placeholder="Eletrônicos" />
 
-        <br/> 
-        
+        <br />
+
         <label>Preço</label>
-        <input type="number" name="categoriaPreco" value="" placeholder="R$ 10.99" />
+        <input type="number" id="preco" value="" placeholder="R$ 10.99" />
 
-        <br/>
+        <br />
 
         <label>Quantidade</label>
-        <input type="number" name="Qtd" value="" placeholder="01"/>
+        <input type="number" id="quantidade" value="" placeholder="01" />
 
-        <br/>
-        <input type="submit" name="name" value="Cadastrar produto" />
+        <br />
+        <input type="button" id="cadastrarProduto" value="Cadastrar Produto" onclick="index.cadastrarProduto()" />
+        <input type="button" id="listarProduto" value="Ver produtos" onclick="index.listarProdutos()" />
     </form>
+
+    <table id="produtos-listagem">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+        </tr>
+
+    </table>
+
+    <div class="errors" style="color: red" id="errors">
+        @ViewBag.Msg
+    </div>
 </div>

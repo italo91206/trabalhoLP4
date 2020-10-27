@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section javascript{
+    <script src="~/js/Produto/index.js"></script>
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Ver produtos cadastrados</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="content-novo card">
+    
+    <div id="produtos-listagem">
+
+    </div>
+
+    <div class="errors" style="color: red" id="errors">
+        @ViewBag.Msg
+    </div>
+</div>

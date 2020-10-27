@@ -16,13 +16,20 @@ namespace trabalhoLP4.Controllers
         {
             int id = usuario.Logar(usuario.Login, usuario.Senha);
             
-
             if (id > -1)
             {
                 usuario = usuario.Obter(id);
                 ViewBag.usuarioConectado = usuario;
                 ViewBag.Logado = true;
-                return Redirect("/produto");
+                TempData["nomeUsuarioLogado"] = usuario.Nome;
+                TempData["logado"] = true;
+                //TempData["usuarioConectado"] = usuario;
+                //TempData["logado"] = true;
+                return Json(new
+                {
+                    operacao = true,
+                    msg = "deu certo..."
+                });
             }
             else
             {
@@ -30,7 +37,7 @@ namespace trabalhoLP4.Controllers
                 {
                     operacao = false,
                     msg = "deu errado..."
-                }); ;
+                }); 
             }
         }
     }

@@ -1,9 +1,9 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @section javascript{
     <script src="~/js/Login/index.js"></script>
-
 }
 
 <div class="content-header">
@@ -17,6 +17,12 @@
 </div>
 
 <div class="content-novo card">
+    <p>
+        A dica é<br/>
+        <b>User</b> adm<br/>
+        <b>Senha</b> 123
+    </p>
+
     <form method="post" action="/Login/Logar">
         <label>Login</label>
         <input type="text" name="login" value="" id="login"/>

@@ -22,6 +22,15 @@
             };
             
             fetch("Login/Logar", config)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (response) {
+                    if (!response.operacao)
+                        errors.innerHTML = "Dados não válidos";
+                    else
+                        window.location.href = "/Produto";
+                })
         }
     }
 }

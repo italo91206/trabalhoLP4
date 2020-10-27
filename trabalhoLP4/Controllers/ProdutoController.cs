@@ -13,10 +13,38 @@ namespace trabalhoLP4.Controllers
             return View();
         }
 
-        public IActionResult Novo(Models.Produto produto)
+        public IActionResult Cadastrar([FromBody] Models.Produto produto)
         {
+            Models.Produto novo = produto;
+            if(produto.Cadastrar() == 1)
+                return Json(new
+                {
+                    operacao = true,
+                    msg = "deu certo...",
+                }); 
+            else
+            {
+                return Json(new
+                {
+                    operacao = false,
+                    msg = "deu errado...",
+                }); 
+            }
 
-            return View("~/Views/Produto/Index.cshtml");
+        }
+
+        public IActionResult Listar()
+        {
+            Models.Produto produto = new Models.Produto();
+            List<Models.Produto> produtos = new List<Models.Produto>();
+
+            produtos = produto.Ler();
+            return Json(new
+            {
+                operacao = true,
+                msg = "Deu certo...",
+                produtos = produtos
+            });
         }
     }
 }
