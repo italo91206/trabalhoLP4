@@ -5,3 +5,18 @@
 .content-novo {
     padding: 15px;
 }
+
+a{
+    text-decoration: none;
+    color: unset !important;
+}
+
+button {
+    border: solid 1px rgb(118, 118, 118);
+    border-radius: 3px;
+    padding: 2px 4px;
+}
+
+.form-group label {
+    display: block;
+}

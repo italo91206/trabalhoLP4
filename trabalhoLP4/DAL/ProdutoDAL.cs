@@ -12,8 +12,6 @@ namespace trabalhoLP4.DAL
 
         public int Gravar(Models.Produto produto)
         {
-            bool response = true;
-
             string sql = @"insert produto (nome, descricao, preco, qtd, categoria) values (@nome, @descricao, @preco, @qtd, @categoria)";
 
             Dictionary<string, object> parametros = new Dictionary<string, object>();
@@ -43,7 +41,7 @@ namespace trabalhoLP4.DAL
                 produto.Descricao = dr["descricao"].ToString();
                 produto.Preco = Convert.ToInt32(dr["preco"]);
                 produto.Qtd = Convert.ToInt32(dr["qtd"]);
-                produto.Categoria = dr["categoria"].ToString();
+                produto.Categoria = Convert.ToInt32(dr["categoria"]);
 
                 produtos.Add(produto);
             }
